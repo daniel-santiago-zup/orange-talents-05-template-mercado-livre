@@ -1,10 +1,6 @@
 package br.com.zup.zupacademy.daniel.mercadolivre.caracteristicaProduto;
 
-import br.com.zup.zupacademy.daniel.mercadolivre.Produto.Produto;
-
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 public class CaracteristicaProdutoRequest {
 
@@ -27,8 +23,8 @@ public class CaracteristicaProdutoRequest {
         return descricao;
     }
 
-    public CaracteristicaProduto converte(@NotNull @Valid Produto produto) {
-        return new CaracteristicaProduto(this.nome,this.descricao,produto);
+    public CaracteristicaProduto converte() {
+        return new CaracteristicaProduto(this.nome,this.descricao);
     }
 
     @Override

@@ -13,6 +13,7 @@ import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ProdutoRequest {
     @NotBlank
@@ -59,7 +60,7 @@ public class ProdutoRequest {
         return new Produto(this.nome,
                 this.valor,
                 this.quantidade,
-                this.caracteristicas,
+                this.caracteristicas.stream().map(CaracteristicaProdutoRequest::converte).collect(Collectors.toSet()),
                 this.descricao,
                 categoriaOptional.get(),
                 anuncianteLogado);
