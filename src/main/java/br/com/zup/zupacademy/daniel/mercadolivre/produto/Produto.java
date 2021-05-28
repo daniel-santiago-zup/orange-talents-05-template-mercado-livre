@@ -1,7 +1,8 @@
-package br.com.zup.zupacademy.daniel.mercadolivre.Produto;
+package br.com.zup.zupacademy.daniel.mercadolivre.produto;
 
-import br.com.zup.zupacademy.daniel.mercadolivre.caracteristicaProduto.CaracteristicaProduto;
+import br.com.zup.zupacademy.daniel.mercadolivre.produto.caracteristicaProduto.CaracteristicaProduto;
 import br.com.zup.zupacademy.daniel.mercadolivre.categoria.Categoria;
+import br.com.zup.zupacademy.daniel.mercadolivre.produto.fotoProduto.FotoProduto;
 import br.com.zup.zupacademy.daniel.mercadolivre.usuario.Usuario;
 import org.hibernate.validator.constraints.Length;
 
@@ -10,6 +11,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.Set;
 
 @Entity
@@ -25,8 +27,10 @@ public class Produto {
     @Positive
     @NotNull
     private Integer quantidade;
+    @Size(min = 1)
+    @ElementCollection(targetClass = FotoProduto.class)
+    private Set<FotoProduto> fotosProduto;
     @Size(min=3)
-    @NotEmpty
     @ElementCollection(targetClass = CaracteristicaProduto.class)
     private Set<CaracteristicaProduto> caracteristicas;
     @NotBlank
@@ -59,5 +63,13 @@ public class Produto {
         this.descricao = descricao;
         this.categoria = categoria;
         this.anunciante = anunciante;
+    }
+
+    public void adicionaFotosProduto(Collection<FotoProduto> fotoProduto) {
+        this.fotosProduto.addAll(fotoProduto);
+    }
+
+    public boolean ehAnunciante(Usuario possivelAnunciante) {
+        return this.anunciante.equals(possivelAnunciante);
     }
 }

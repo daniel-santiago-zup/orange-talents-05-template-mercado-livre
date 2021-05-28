@@ -5,14 +5,12 @@ import javax.validation.Payload;
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = IdOpcionalEExistenteValidator.class)
+@Constraint(validatedBy = PossuiContentTypeValidator.class)
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface IdOpcionalEExistente {
-    String message() default "Valor deve existir no banco de dados!";
+public @interface PossuiContentType {
+    String message() default "Content-type fornecido não aceito";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
-    Class<?> classeEntidade();
-    String nomeCampoId() default "id";
-    Class<?> tipoCampoId() default Long.class;
+    String comecaCom() default "";
 }

@@ -1,4 +1,4 @@
-package br.com.zup.zupacademy.daniel.mercadolivre.Produto;
+package br.com.zup.zupacademy.daniel.mercadolivre.produto;
 
 import br.com.zup.zupacademy.daniel.mercadolivre.usuario.Usuario;
 import org.springframework.data.repository.CrudRepository;

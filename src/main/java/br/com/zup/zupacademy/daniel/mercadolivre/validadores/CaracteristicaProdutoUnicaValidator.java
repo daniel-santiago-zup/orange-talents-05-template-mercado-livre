@@ -1,15 +1,16 @@
 package br.com.zup.zupacademy.daniel.mercadolivre.validadores;
 
-import br.com.zup.zupacademy.daniel.mercadolivre.Produto.ProdutoRequest;
+import br.com.zup.zupacademy.daniel.mercadolivre.produto.ProdutoRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 @Component
 public class CaracteristicaProdutoUnicaValidator implements Validator {
+
     @Override
     public boolean supports(Class<?> aClass) {
-        return aClass.isAssignableFrom(ProdutoRequest.class);
+        return aClass.equals(ProdutoRequest.class);
     }
 
     @Override

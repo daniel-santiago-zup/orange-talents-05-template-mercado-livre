@@ -1,10 +1,11 @@
-package br.com.zup.zupacademy.daniel.mercadolivre.caracteristicaProduto;
+package br.com.zup.zupacademy.daniel.mercadolivre.produto.caracteristicaProduto;
 
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotBlank;
 
 @Embeddable
 public class CaracteristicaProduto {
+
     @NotBlank
     private String nome;
     @NotBlank
@@ -16,13 +17,5 @@ public class CaracteristicaProduto {
     public CaracteristicaProduto(String nome, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public String getDescricao() {
-        return descricao;
     }
 }

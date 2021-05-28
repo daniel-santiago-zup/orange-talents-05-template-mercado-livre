@@ -1,6 +1,6 @@
-package br.com.zup.zupacademy.daniel.mercadolivre.Produto;
+package br.com.zup.zupacademy.daniel.mercadolivre.produto;
 
-import br.com.zup.zupacademy.daniel.mercadolivre.caracteristicaProduto.CaracteristicaProdutoRequest;
+import br.com.zup.zupacademy.daniel.mercadolivre.produto.caracteristicaProduto.CaracteristicaProdutoRequest;
 import br.com.zup.zupacademy.daniel.mercadolivre.categoria.Categoria;
 import br.com.zup.zupacademy.daniel.mercadolivre.categoria.CategoriaRepository;
 import br.com.zup.zupacademy.daniel.mercadolivre.usuario.Usuario;

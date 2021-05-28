@@ -1,4 +1,4 @@
-package br.com.zup.zupacademy.daniel.mercadolivre.caracteristicaProduto;
+package br.com.zup.zupacademy.daniel.mercadolivre.produto.caracteristicaProduto;
 
 import javax.validation.constraints.NotBlank;
 
