@@ -1,6 +1,6 @@
 package br.com.zup.zupacademy.daniel.mercadolivre.common;
 
-import br.com.zup.zupacademy.daniel.mercadolivre.perguntaProduto.PerguntaProduto;
+import br.com.zup.zupacademy.daniel.mercadolivre.produto.perguntaProduto.PerguntaProduto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

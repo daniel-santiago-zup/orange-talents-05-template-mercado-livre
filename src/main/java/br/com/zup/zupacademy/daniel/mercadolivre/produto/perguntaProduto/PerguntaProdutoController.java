@@ -1,4 +1,4 @@
-package br.com.zup.zupacademy.daniel.mercadolivre.perguntaProduto;
+package br.com.zup.zupacademy.daniel.mercadolivre.produto.perguntaProduto;
 
 import br.com.zup.zupacademy.daniel.mercadolivre.common.Emails;
 import br.com.zup.zupacademy.daniel.mercadolivre.produto.Produto;

@@ -2,7 +2,6 @@ package br.com.zup.zupacademy.daniel.mercadolivre.categoria;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.Optional;
 
 @Entity
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = "nome")})
@@ -13,7 +12,7 @@ public class Categoria {
     private Long id;
     @NotBlank
     private String nome;
-    @ManyToOne(optional = true)
+    @ManyToOne
     private Categoria categoriaMae;
 
     @Deprecated
@@ -27,5 +26,13 @@ public class Categoria {
     public Categoria(String nome, Categoria categoriaMae) {
         this.nome = nome;
         this.categoriaMae = categoriaMae;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Categoria getCategoriaMae() {
+        return categoriaMae;
     }
 }

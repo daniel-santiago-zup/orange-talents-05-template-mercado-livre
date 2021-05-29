@@ -4,6 +4,8 @@ import br.com.zup.zupacademy.daniel.mercadolivre.categoria.CategoriaRepository;
 import br.com.zup.zupacademy.daniel.mercadolivre.common.UploaderDeImagensFake;
 import br.com.zup.zupacademy.daniel.mercadolivre.produto.fotoProduto.FotoProduto;
 import br.com.zup.zupacademy.daniel.mercadolivre.produto.fotoProduto.FotoProdutoRequest;
+import br.com.zup.zupacademy.daniel.mercadolivre.produto.opiniaoProduto.OpiniaoProdutoRepository;
+import br.com.zup.zupacademy.daniel.mercadolivre.produto.perguntaProduto.PerguntaProdutoRepository;
 import br.com.zup.zupacademy.daniel.mercadolivre.usuario.Usuario;
 import br.com.zup.zupacademy.daniel.mercadolivre.validadores.CaracteristicaProdutoUnicaValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,10 @@ public class ProdutoController {
     @Autowired
     CategoriaRepository categoriaRepository;
     @Autowired
+    OpiniaoProdutoRepository opiniaoProdutoRepository;
+    @Autowired
+    PerguntaProdutoRepository perguntaProdutoRepository;
+    @Autowired
     CaracteristicaProdutoUnicaValidator caracteristicaProdutoUnicaValidator;
 
     @InitBinder
@@ -39,6 +45,15 @@ public class ProdutoController {
                 && caracteristicaProdutoUnicaValidator.supports(binder.getTarget().getClass()) ) {
             binder.addValidators(caracteristicaProdutoUnicaValidator);
         }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> detalhaProduto (@PathVariable Long id) {
+        Optional<Produto> produtoOptional = produtoRepository.findById(id);
+        if (produtoOptional.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(new ProdutoResponse(produtoOptional.get(), opiniaoProdutoRepository, perguntaProdutoRepository));
     }
 
     @PostMapping

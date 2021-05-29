@@ -1,4 +1,4 @@
-package br.com.zup.zupacademy.daniel.mercadolivre.opiniaoProduto;
+package br.com.zup.zupacademy.daniel.mercadolivre.produto.opiniaoProduto;
 
 import br.com.zup.zupacademy.daniel.mercadolivre.produto.Produto;
 import br.com.zup.zupacademy.daniel.mercadolivre.usuario.Usuario;

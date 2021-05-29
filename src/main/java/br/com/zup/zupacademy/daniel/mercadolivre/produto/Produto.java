@@ -1,18 +1,23 @@
 package br.com.zup.zupacademy.daniel.mercadolivre.produto;
 
-import br.com.zup.zupacademy.daniel.mercadolivre.produto.caracteristicaProduto.CaracteristicaProduto;
 import br.com.zup.zupacademy.daniel.mercadolivre.categoria.Categoria;
+import br.com.zup.zupacademy.daniel.mercadolivre.produto.caracteristicaProduto.CaracteristicaProduto;
 import br.com.zup.zupacademy.daniel.mercadolivre.produto.fotoProduto.FotoProduto;
 import br.com.zup.zupacademy.daniel.mercadolivre.usuario.Usuario;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.Valid;
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 public class Produto {
@@ -69,7 +74,35 @@ public class Produto {
         this.fotosProduto.addAll(fotoProduto);
     }
 
+    public List<String> linksFotos() {
+        return this.fotosProduto.stream().map(FotoProduto::getUrlFoto).collect(Collectors.toList());
+    }
+
     public boolean ehAnunciante(Usuario possivelAnunciante) {
         return this.anunciante.equals(possivelAnunciante);
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public Set<CaracteristicaProduto> getCaracteristicas() {
+        return caracteristicas;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
     }
 }

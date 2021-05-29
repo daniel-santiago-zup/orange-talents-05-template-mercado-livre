@@ -1,4 +1,4 @@
-package br.com.zup.zupacademy.daniel.mercadolivre.opiniaoProduto;
+package br.com.zup.zupacademy.daniel.mercadolivre.produto.opiniaoProduto;
 
 import br.com.zup.zupacademy.daniel.mercadolivre.produto.Produto;
 import br.com.zup.zupacademy.daniel.mercadolivre.usuario.Usuario;
@@ -40,5 +40,17 @@ public class OpiniaoProduto {
         this.descricao = descricao;
         this.autor = autor;
         this.produto = produto;
+    }
+
+    public Integer getNota() {
+        return nota;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getDescricao() {
+        return descricao;
     }
 }
