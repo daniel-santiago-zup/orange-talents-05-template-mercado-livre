@@ -8,10 +8,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -29,7 +26,7 @@ public class Produto {
     @Positive
     @NotNull
     private BigDecimal valor;
-    @Positive
+    @PositiveOrZero
     @NotNull
     private Integer quantidade;
     @Size(min = 1)
@@ -80,6 +77,13 @@ public class Produto {
 
     public boolean ehAnunciante(Usuario possivelAnunciante) {
         return this.anunciante.equals(possivelAnunciante);
+    }
+
+    public void abateNoEstoque(Integer quantidadeLiquidada) {
+        if (this.quantidade < quantidadeLiquidada) {
+            throw new IllegalArgumentException("A quantidade fornecida excede o estoque");
+        }
+        this.quantidade -= quantidadeLiquidada;
     }
 
     public String getNome() {

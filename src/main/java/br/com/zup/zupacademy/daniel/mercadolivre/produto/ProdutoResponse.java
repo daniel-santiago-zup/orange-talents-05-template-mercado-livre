@@ -84,4 +84,8 @@ public class ProdutoResponse {
     public CategoriaResponse getCategoria() {
         return categoria;
     }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
 }
