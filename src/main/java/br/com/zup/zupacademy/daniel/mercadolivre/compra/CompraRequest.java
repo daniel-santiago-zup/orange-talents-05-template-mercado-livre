@@ -13,6 +13,7 @@ public class CompraRequest {
     @IdExistente(classeEntidade = Produto.class)
     private Long idProduto;
     @Positive
+    @NotNull
     private Integer quantidade;
     @NotNull
     private GatewayDePagamento gatewayDePagamento;

@@ -109,4 +109,12 @@ public class Produto {
     public Categoria getCategoria() {
         return categoria;
     }
+
+    public String emailDoAnunciante() {
+        return anunciante.getUsername();
+    }
+
+    public Long getIdDoAnunciante() {
+        return this.anunciante.getId();
+    }
 }

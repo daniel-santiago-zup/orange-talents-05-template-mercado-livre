@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -39,11 +40,12 @@ public class CompraController {
     @PostMapping("/compra")
     @Transactional
     public ResponseEntity<?> cadastraCompra(@RequestBody @Valid CompraRequest request,
-                                       @AuthenticationPrincipal Usuario usuario) {
+                                            @AuthenticationPrincipal Usuario usuario,
+                                            UriComponentsBuilder uriComponentsBuilder) {
         Compra compra = compraRepository.save(request.converte(produtoRepository,usuario));
         emails.novaCompra(compra);
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(URI.create(compra.processaCompra("www.google.com")));
+        headers.setLocation(URI.create(compra.geraLinkDePagamento(uriComponentsBuilder)));
         return new ResponseEntity<>(headers, HttpStatus.FOUND);
     }
 }
